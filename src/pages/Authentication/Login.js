@@ -13,7 +13,6 @@ function Login() {
     password: "",
   });
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const emailHandler = (event) => {
     setInfo({ email: event.target.value, password });

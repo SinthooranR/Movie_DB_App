@@ -12,8 +12,6 @@ function Navbar() {
   const history = useHistory();
   const [search, setSearch] = useState("");
 
-  const auth = useSelector(setAuth);
-
   const toHome = () => {
     history.push("/");
   };
@@ -36,13 +34,6 @@ function Navbar() {
   return (
     <nav className={classes.Navbar}>
       <img src={UdemyLogo} alt="logo" onClick={toHome} />
-      <select name="Categories">
-        <option value="">Categories</option>
-        <option value="Angular">Angular</option>
-        <option value="VueJS">VueJS</option>
-        <option value="React">React</option>
-      </select>
-
       <Input
         inputType="input"
         label="Search"
@@ -52,8 +43,8 @@ function Navbar() {
         onChange={searchCourse}
       />
       <ul>
-        <NavItem routeName="Udemy for Business" routePath="/" />
-        <NavItem routeName="Teach on Udemy" routePath="/myCourses" />
+        <NavItem routeName="Movies" routePath="/movies" />
+        <NavItem routeName="Not Sure" routePath="/" />
       </ul>
 
       <div>
