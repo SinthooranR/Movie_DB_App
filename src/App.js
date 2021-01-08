@@ -1,26 +1,37 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-
-import Navbar from "./components/Navbar/Navbar";
-import MainPage from "./pages/Main/Main";
-import CoursePage from "./pages/Courses/Courses";
-
-import LoginPage from "./pages/Authentication/Login";
-import SignupPage from "./pages/Authentication/Signup";
-
+import React, { useEffect, useState } from "react";
+import Movie from "./components/Movie/Movie";
+import axios from "axios";
 import "./App.css";
 
+const POP_MOVIES_API = `https://api.themoviedb.org/3/movie/popular?api_key=${process.env.REACT_APP_CODE}`;
+
+const SEARCH_MOVIE = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_CODE}&language=en-US&page=1&include_adult=false&query=`;
+
 function App() {
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const popMoviesFetch = async () => {
+      axios.get(POP_MOVIES_API).then((response) => {
+        setMovies(response.data.results);
+      });
+      // const movieResponse = await fetch(POP_MOVIES_API);
+      // const moviesR = await movieResponse.json();
+      // setMovies(moviesR);
+    };
+
+    popMoviesFetch();
+  }, []);
+
+  console.log(movies);
+
   return (
-    <React.Fragment>
-      <Navbar />
-      <Switch>
-        <Route exact path="/" component={MainPage} />
-        <Route path="/myCourses" component={CoursePage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/signup" component={SignupPage} />
-      </Switch>
-    </React.Fragment>
+    <div>
+      {movies.length > 0 &&
+        movies.map((mov) => {
+          return <Movie key={mov.id} {...mov} />;
+        })}
+    </div>
   );
 }
 

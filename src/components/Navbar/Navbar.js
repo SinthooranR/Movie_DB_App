@@ -5,8 +5,6 @@ import NavItem from "./NavItem";
 import { useHistory } from "react-router-dom";
 import Input from "../Input/Input";
 import UdemyLogo from "../../assets/udemy.png";
-import { useSelector } from "react-redux";
-import { setAuth } from "../../reduxState/features/authSlice";
 
 import classes from "./Navbar.module.scss";
 
@@ -57,20 +55,19 @@ function Navbar() {
         <NavItem routeName="Udemy for Business" routePath="/" />
         <NavItem routeName="Teach on Udemy" routePath="/myCourses" />
       </ul>
-      {!auth && (
-        <div>
-          <Button
-            buttonName="Login"
-            onClick={toLogin}
-            className={classes.Login}
-          />
-          <Button
-            buttonName="Sign Up"
-            onClick={toRegister}
-            className={classes.SignUp}
-          />
-        </div>
-      )}
+
+      <div>
+        <Button
+          buttonName="Login"
+          onClick={toLogin}
+          className={classes.Login}
+        />
+        <Button
+          buttonName="Sign Up"
+          onClick={toRegister}
+          className={classes.SignUp}
+        />
+      </div>
     </nav>
   );
 }

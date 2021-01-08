@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
-
-import { login } from "../../reduxState/features/authSlice";
 
 import classes from "./Auth.module.scss";
 
@@ -33,9 +30,6 @@ function Signup() {
 
   const signupHandler = (event) => {
     alert(`${name}, ${email}, ${password}`);
-    dispatch(
-      login({ name: name, email: email, password: password, loggedIn: true })
-    );
     history.push("/");
     event.preventDefault();
   };

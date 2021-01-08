@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { login } from "../../reduxState/features/authSlice";
 
 import Input from "../../components/Input/Input";
 import Button from "../../components/Button/Button";
@@ -27,7 +25,6 @@ function Login() {
 
   const loginHandler = (event) => {
     alert(`${email}, ${password}`);
-    dispatch(login({ email: email, password: password, loggedIn: true }));
     history.push("/");
     event.preventDefault();
   };
