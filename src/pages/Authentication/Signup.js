@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
+import Input from "../../components/Reusable/Input";
+import Button from "../../components/Reusable/Button";
 
 import classes from "./Auth.module.scss";
 
@@ -14,7 +14,6 @@ function Signup() {
     password: "",
   });
   const history = useHistory();
-  const dispatch = useDispatch();
 
   const nameHandler = (event) => {
     setInfo({ name: event.target.value, email, password });
@@ -30,7 +29,7 @@ function Signup() {
 
   const signupHandler = (event) => {
     alert(`${name}, ${email}, ${password}`);
-    history.push("/");
+    history.push("/movies");
     event.preventDefault();
   };
 

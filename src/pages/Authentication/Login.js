@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 import { useHistory } from "react-router-dom";
 
-import Input from "../../components/Input/Input";
-import Button from "../../components/Button/Button";
+import Input from "../../components/Reusable/Input";
+import Button from "../../components/Reusable/Button";
 
 import classes from "./Auth.module.scss";
 
@@ -24,7 +24,7 @@ function Login() {
 
   const loginHandler = (event) => {
     alert(`${email}, ${password}`);
-    history.push("/");
+    history.push("/movies");
     event.preventDefault();
   };
 

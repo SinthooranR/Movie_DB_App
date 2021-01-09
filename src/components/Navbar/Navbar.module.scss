@@ -7,29 +7,29 @@
   background-color: $background;
   box-shadow: 0 4px 2px -2px $box-shadow;
 
-  img{
+  img {
     height: 75px;
     cursor: pointer;
   }
 
   ul {
     width: 25%;
-    a, a:visited {
+    a,
+    a:visited {
       margin-left: 5%;
       text-decoration: none;
       color: black;
       cursor: pointer;
     }
-    a:hover{
-      color: $button-color
+    a:hover {
+      color: $button-color;
     }
   }
 
   div {
-    width: 25%;
     height: 100%;
     button {
-      margin: 10px 0 10px 25px;
+      margin: 10px 0 10px 50px;
       height: 40px;
       width: 65px;
       cursor: pointer;
@@ -41,9 +41,8 @@
       background-color: $button-color2;
     }
   }
- 
-  input{
+
+  input {
     margin-top: 20px;
   }
-  
 }

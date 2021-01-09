@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-
-import Button from "../Button/Button";
-import NavItem from "./NavItem";
 import { useHistory } from "react-router-dom";
-import Input from "../Input/Input";
+
+import NavItem from "./NavItem";
+import Input from "../Reusable/Input";
+import Button from "../Reusable/Button";
 import UdemyLogo from "../../assets/udemy.png";
 
 import classes from "./Navbar.module.scss";
@@ -18,11 +18,6 @@ function Navbar() {
 
   const toLogin = (event) => {
     history.push("/login");
-    event.preventDefault();
-  };
-
-  const toRegister = (event) => {
-    history.push("/signup");
     event.preventDefault();
   };
 
@@ -52,11 +47,6 @@ function Navbar() {
           buttonName="Login"
           onClick={toLogin}
           className={classes.Login}
-        />
-        <Button
-          buttonName="Sign Up"
-          onClick={toRegister}
-          className={classes.SignUp}
         />
       </div>
     </nav>

@@ -1,9 +1,17 @@
-.Movie{
-    img{
-        height: 85%;
-        width: 100%;
+.Movie {
+  img {
+    height: 85%;
+    width: 100%;
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+      margin-left: 5%;
     }
-    h3{
-        // margin-bottom: 10%
+    button {
+      margin-right: 5%;
     }
+  }
 }

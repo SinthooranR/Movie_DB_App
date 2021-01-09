@@ -1,8 +1,12 @@
-.Auth{
-    height: 100%;
-    text-align: center;
-    form{
-        height: 50%;
-    }
-    // input{}
+.Auth {
+  height: 100%;
+  text-align: center;
+  form {
+    height: 50%;
+  }
+  input {
+    box-sizing: border-box;
+    width: 200px;
+    padding: 20px;
+  }
 }

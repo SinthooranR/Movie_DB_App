@@ -8,24 +8,28 @@ const POP_MOVIES_API = `https://api.themoviedb.org/3/movie/popular?api_key=${pro
 const SEARCH_MOVIE = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_CODE}&language=en-US&page=1&include_adult=false&query=`;
 
 const Movies = () => {
-    const [movies, setMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
 
-    useEffect(() => {
-      const popMoviesFetch = async () => {
-        axios.get(POP_MOVIES_API).then((response) => {
-          setMovies(response.data.results);
-        });
-      };
-  
-      popMoviesFetch();
-    }, []);
-  
-    console.log(movies);
+  useEffect(() => {
+    const popMoviesFetch = async () => {
+      axios.get(POP_MOVIES_API).then((response) => {
+        setMovies(response.data.results);
+      });
+    };
+
+    popMoviesFetch();
+  }, []);
+
+  console.log(movies);
   return (
     <div className={classes.Movies}>
       {movies.length > 0 &&
         movies.map((mov) => {
-          return  <div key={mov.id}><Movie {...mov} /></div>;
+          return (
+            <div key={mov.id}>
+              <Movie {...mov} />
+            </div>
+          );
         })}
     </div>
   );

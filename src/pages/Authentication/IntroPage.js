@@ -1,14 +1,30 @@
-import React from 'react'
-import Button from "../../components/Button/Button";
+import React, { useState } from "react";
+import Input from "../../components/Reusable/Input";
+import Button from "../../components/Reusable/Button";
+import { useHistory } from "react-router-dom";
+import classes from "./Auth.module.scss";
 
 const Intro = () => {
-    return (
-        <div>
-            <h1>Welcome</h1>
-    {/* <Button onClick= style= type=/> */}
-            
-        </div>
-    )
-}
+  const history = useHistory();
+  const [email, setEmail] = useState("");
 
-export const Intro;
+  const signUpHandler = (event) => {
+    history.push("/signup");
+    event.preventDefault();
+  };
+
+  const emailChange = (event) => {
+    setEmail(event.target.value);
+    event.preventDefault();
+  };
+
+  return (
+    <div className={classes.Auth}>
+      <h1>Welcome</h1>
+      <Input type="email" name="Email" value={email} onChange={emailChange} />
+      <Button onClick={signUpHandler} buttonName="GET STARTED" />
+    </div>
+  );
+};
+
+export default Intro;
