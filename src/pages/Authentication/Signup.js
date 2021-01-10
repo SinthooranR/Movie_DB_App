@@ -35,27 +35,24 @@ function Signup() {
 
   return (
     <div className={classes.Auth}>
-      <h2>SignUp to Your Udemy Account</h2>
+      <h2>Create your Netflix Account</h2>
       <form onSubmit={signupHandler}>
         <Input
-          inputType="input"
-          label="Name"
+          icon="name"
           type="text"
           name="Enter Your Full Name"
           value={name}
           onChange={nameHandler}
         />
         <Input
-          inputType="input"
-          label="Email"
+          icon="email"
           type="email"
-          name="Enter Your Name"
+          name="Enter Your Email"
           value={email}
           onChange={emailHandler}
         />
         <Input
-          inputType="input"
-          label="Password"
+          icon="password"
           type="password"
           name="Enter Your Password"
           value={password}

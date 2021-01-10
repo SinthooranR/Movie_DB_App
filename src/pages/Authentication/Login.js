@@ -30,19 +30,17 @@ function Login() {
 
   return (
     <div className={classes.Auth}>
-      <h2>Login to Your Udemy Account</h2>
+      <h2>Sign into Netflix</h2>
       <form onSubmit={loginHandler}>
         <Input
-          inputType="input"
-          label="Email"
+          icon="email"
           type="email"
           name="Enter Your Email"
           value={email}
           onChange={emailHandler}
         />
         <Input
-          inputType="input"
-          label="Password"
+          icon="password"
           type="password"
           name="Enter Your Password"
           value={password}

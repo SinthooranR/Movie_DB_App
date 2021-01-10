@@ -21,7 +21,13 @@ const Intro = () => {
   return (
     <div className={classes.Auth}>
       <h1>Welcome</h1>
-      <Input type="email" name="Email" value={email} onChange={emailChange} />
+      <Input
+        icon="email"
+        type="email"
+        name="Email"
+        value={email}
+        onChange={emailChange}
+      />
       <Button onClick={signUpHandler} buttonName="GET STARTED" />
     </div>
   );

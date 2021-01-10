@@ -4,9 +4,23 @@
   form {
     height: 50%;
   }
+  svg {
+    margin: 12.5px 0 0 1%;
+    position: absolute;
+    font-size: 2.5rem;
+  }
   input {
     box-sizing: border-box;
-    width: 200px;
-    padding: 20px;
+    width: 60%;
+    padding: 20px 0 20px 5%;
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .Auth {
+    input {
+      padding: 20px 0 20px 12.5%;
+    }
   }
 }
