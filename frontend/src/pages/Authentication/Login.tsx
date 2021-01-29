@@ -22,10 +22,26 @@ function Login() {
     setInfo({ email, password: event.currentTarget.value });
   };
 
-  const loginHandler = (event: FormEvent<HTMLFormElement>) => {
+  const loginHandler = async(event: FormEvent<HTMLFormElement>) => {
     alert(`${email}, ${password}`);
-    history.push("/movies");
     event.preventDefault();
+    history.push("/movies");
+    // Fetch API call
+    try{
+      const body = {email, password };
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(body)
+      });
+      const jsonData = await response.json();
+
+      console.log(jsonData);
+    }
+    catch(err){
+      console.error(err);
+    }
+
   };
 
   return (
