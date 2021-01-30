@@ -17,7 +17,7 @@ function Navbar() {
     event.preventDefault();
   };
 
-  const searchCourse = (event: FormEvent<HTMLInputElement>) => {
+  const searchMovie = (event: FormEvent<HTMLInputElement>) => {
     setSearch(event.currentTarget.value);
     console.log(search);
   }
@@ -29,7 +29,7 @@ function Navbar() {
         type="text"
         name="Search Movie"
         value={search}
-        onChange={searchCourse}/>
+        onChange={searchMovie}/>
       <ul>
         <NavItem routeName="Movies" routePath="/movies" />
         <NavItem routeName="Not Sure" routePath="/" />

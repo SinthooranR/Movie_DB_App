@@ -17,8 +17,8 @@
 
 // NEED TO CREATE THIS FILE IF YOU WANT TO TEST WITH YOUR OWN POSTGRES DB
 const pool = require("../db");
-
 const HttpError = require("../ErrorHandler");
+const bcrypt = require("bcryptjs");
 
 // SIGNUP FUNCTION
 const signup = async (req, res, next) => {
@@ -28,29 +28,23 @@ const signup = async (req, res, next) => {
   let existsEmail;
   try {
     existsEmail = await pool.query(
-      "SELECT EXISTS (SELECT * FROM account WHERE email = $1)",
+      "SELECT * FROM account WHERE email = $1",
       [email]
     );
-  } catch (err) {
-    const error = new HttpError("Cannot find anything", 500);
-    return next(error);
-  }
 
-  if (existsEmail.rows[0].exists === true) {
-    const error = new HttpError("User exists", 500);
-    return next(error);
-  }
+    if (existsEmail.rows.length > 0) {
+      const error = new HttpError("User exists", 500);
+      return next(error);
+    }
 
-  // Add the user in the database
-  let newUser;
-  try {
-    newUser = await pool.query(
+    const hashPassword = await bcrypt.hash(password, 10);
+    let newUser = await pool.query(
       "INSERT INTO account (name, email, password, plan) VALUES($1, $2, $3, $4) RETURNING *",
-      [name, email, password, plan]
+      [name, email, hashPassword, plan]
     );
     res.json(newUser.rows[0]);
   } catch (err) {
-    const error = new HttpError("Cannot add user", 500);
+    const error = new HttpError("Cannot find anything", 500);
     return next(error);
   }
 };
@@ -61,9 +55,10 @@ const login = async (req, res, next) => {
 
   let user;
   try {
+    const validPassword = bcrypt.compare(password, user.rows[0].password);
     user = await pool.query(
       "SELECT * FROM account WHERE email = $1 AND password = $2",
-      [email, password]
+      [email, validPassword]
     );
   } catch (err) {
     const error = new HttpError("Cannot Login", 500);
