@@ -6,6 +6,7 @@ import { mainSelector } from "../../reduxState/slices/movieSlice";
 import Movie from "../../components/Movie/Movie";
 import classes from "./Movies.module.scss";
 import Button from "../../components/Reusable/Button";
+import Spinner from "../../components/Spinner/Spinner";
 
 interface MovieType {
   id: number;
@@ -57,13 +58,15 @@ function SearchResults() {
 
   return (
     <React.Fragment>
-      <Button
-        buttonName="Go Back"
-        onClick={(e) => {
-          history.push("/");
-          e.preventDefault();
-        }}
-      />
+      {movies.length > 0 && (
+        <Button
+          buttonName="Go Back"
+          onClick={(e) => {
+            history.push("/movies");
+            e.preventDefault();
+          }}
+        />
+      )}
       <div className={classes.MainPage}>
         <Button
           buttonName="<"
@@ -84,7 +87,7 @@ function SearchResults() {
               );
             })
           ) : (
-            <h1>Nothing Exists</h1>
+            <Spinner />
           )}
         </div>
         <Button

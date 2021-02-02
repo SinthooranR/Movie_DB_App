@@ -6,7 +6,7 @@ function Navbar() {
   return (
     <nav className={classes.Navbar}>
       <ul>
-        <NavItem routeName="Movies" routePath="/" />
+        <NavItem routeName="Movies" routePath="/movies" />
         <NavItem routeName="About" routePath="/about" />
       </ul>
     </nav>
