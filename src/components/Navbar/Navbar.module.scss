@@ -1,0 +1,23 @@
+@import "../../styles/colors.scss";
+
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  background-color: $background;
+  box-shadow: 0 4px 2px -2px $box-shadow;
+
+  ul {
+    width: 25%;
+    a,
+    a:visited {
+      margin-left: 5%;
+      text-decoration: none;
+      color: black;
+      cursor: pointer;
+    }
+    a:hover {
+      color: $button-color;
+    }
+  }
+}
