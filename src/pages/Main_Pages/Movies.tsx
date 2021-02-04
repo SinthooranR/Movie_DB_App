@@ -39,15 +39,15 @@ function Movies() {
   };
 
   const openModal = (event: MouseEvent<HTMLImageElement>, id: number) => {
-      dispatch(setMovieId(id));
-      setShowModal(true);
-      event.preventDefault();
+    dispatch(setMovieId(id));
+    setShowModal(true);
+    event.preventDefault();
   };
 
   const closeModal = (event: MouseEvent<HTMLButtonElement>) => {
     setShowModal(false);
     event.preventDefault();
-};
+  };
 
   useEffect(() => {
     const popMoviesFetch = async () => {
@@ -61,7 +61,6 @@ function Movies() {
     };
     popMoviesFetch();
   }, [page]);
-
 
   const searchMovie = (event: FormEvent<HTMLInputElement>) => {
     setSearch(event.currentTarget.value);
