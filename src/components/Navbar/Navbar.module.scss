@@ -3,21 +3,69 @@
 .Navbar {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  background-color: $background;
-  box-shadow: 0 4px 2px -2px $box-shadow;
+  justify-content: space-between;
+  box-shadow: 0 4px 2px -2px $box-shadow_light;
+  height: 65px;
 
   ul {
-    width: 25%;
+    width: 50%;
     a,
     a:visited {
-      margin-left: 5%;
+      margin-left: 15%;
+      font-size: 1.5rem;
       text-decoration: none;
-      color: black;
       cursor: pointer;
     }
     a:hover {
-      color: $button-color;
+      transition: 1s;
     }
+  }
+  div {
+    margin-right: 4%;
+    svg {
+      cursor: pointer;
+      margin-top: 10px;
+      font-size: 3rem;
+    }
+    svg:hover {
+      background-color: grey;
+      border-radius: 50%;
+      transition: 1s;
+    }
+  }
+}
+
+/* Themes */
+.Light {
+  background-color: $nav_light;
+  color: $general_dark;
+  transition: 1s;
+  ul {
+    a:visited {
+      color: $general_dark;
+    }
+    a:hover {
+      border-top: 1px solid $general_dark;
+    }
+  }
+}
+
+.Dark {
+  background-color: $nav_dark;
+  color: $general_light;
+  transition: 1s;
+  ul {
+    a:visited {
+      color: $general_light;
+    }
+    a:hover {
+      border-top: 1px solid $general_light;
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
   }
 }

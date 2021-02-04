@@ -1,0 +1,29 @@
+.About {
+  text-align: center;
+  height: 100%;
+  width: 100%;
+  animation: fade 1s ease-in;
+  h1 {
+    margin-top: 0;
+    padding-top: 5%;
+  }
+  p {
+    font-size: 1.5rem;
+  }
+  a {
+    text-decoration: none;
+    font-size: 2rem;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+  ul {
+    list-style: none;
+  }
+}
+
+@keyframes fade {
+    0% {
+      opacity: 0;
+    }
+  }

@@ -4,9 +4,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setMovieId } from "../../reduxState/slices/movieSlice";
 import { mainSelector } from "../../reduxState/slices/movieSlice";
 import Movie from "../../components/Movie/Movie";
-import classes from "./Movies.module.scss";
+import MovieModal from "../../components/Movie/MovieModal";
 import Button from "../../components/Reusable/Button";
 import Spinner from "../../components/Spinner/Spinner";
+import classes from "./Movies.module.scss";
 
 interface MovieType {
   id: number;
@@ -17,6 +18,7 @@ interface MovieType {
 function SearchResults() {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [page, setPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
   const { searchMovieString } = useSelector(mainSelector);
@@ -33,9 +35,14 @@ function SearchResults() {
     event.preventDefault();
   };
 
-  const viewMovie = (event: MouseEvent<HTMLImageElement>, id: number) => {
-    history.push("/movieDetails");
+  const openModal = (event: MouseEvent<HTMLImageElement>, id: number) => {
     dispatch(setMovieId(id));
+    setShowModal(true);
+    event.preventDefault();
+  };
+
+  const closeModal = (event: MouseEvent<HTMLButtonElement>) => {
+    setShowModal(false);
     event.preventDefault();
   };
 
@@ -58,15 +65,15 @@ function SearchResults() {
 
   return (
     <React.Fragment>
-      {movies.length > 0 && (
-        <Button
-          buttonName="Go Back"
-          onClick={(e) => {
-            history.push("/movies");
-            e.preventDefault();
-          }}
-        />
-      )}
+      <Button
+        buttonName="Go Back"
+        onClick={(e) => {
+          history.push("/movies");
+          e.preventDefault();
+        }}
+        className={classes.BackButton}
+      />
+      <h2 style={{textAlign: 'center'}}>Results for: {searchMovieString}</h2>
       <div className={classes.MainPage}>
         <Button
           buttonName="<"
@@ -81,13 +88,13 @@ function SearchResults() {
                   <Movie
                     title={mov.title}
                     poster_path={mov.poster_path}
-                    imgClick={(e) => viewMovie(e, mov.id)}
+                    imgClick={(e) => openModal(e, mov.id)}
                   />
                 </div>
               );
             })
           ) : (
-            <Spinner />
+            <Spinner className={classes.SpinnerCheck}/>
           )}
         </div>
         <Button
@@ -96,6 +103,7 @@ function SearchResults() {
           disabled={movies.length === 0}
         />
       </div>
+      <MovieModal showModal={showModal} modalClick={closeModal} />
     </React.Fragment>
   );
 }

@@ -23,7 +23,7 @@ function Movie(props: MovieProps) {
         <img src={noImage} alt="" onClick={props.imgClick} />
       )}
       <div>
-        <h3>{props.title}</h3>
+        {/* <h3>{props.title}</h3> */}
       </div>
     </div>
   );

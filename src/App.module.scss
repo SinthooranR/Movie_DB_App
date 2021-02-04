@@ -1,0 +1,61 @@
+@import "./styles/colors.scss";
+
+.App {
+  min-height: 100vh;
+}
+
+.Light {
+  background-color: $background_light;
+  color: $general_dark;
+  transition: 0.5s;
+  animation: fade 1s ease-in;
+  input {
+    background-color: $input_light;
+    color: $general_dark;
+    box-shadow: $box-shadow_dark;
+  }
+  button {
+    background-color: $input_light;
+    color: $general_dark;
+    box-shadow: $box-shadow_dark;
+  }
+  button:hover{
+    background-color: #D3CCE3;
+    transition: 0.5s;
+  }
+  a,
+  a:visited {
+    color: $general_dark;
+  }
+}
+
+.Dark {
+  background-color: $background_dark;
+  color: $general_light;
+  transition: 0.5s;
+  animation: fade 1s ease-in;
+  input {
+    background-color: $input_dark;
+    color: $general_light;
+    box-shadow: $box-shadow_light;
+  }
+  button {
+    background-color: $input_dark;
+    color: $general_light;
+    box-shadow: $box-shadow_light;
+  }
+  button:hover{
+    background-color: #302b63;
+    transition: 0.5s;
+  }
+  a,
+  a:visited {
+    color: $general_light;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+}

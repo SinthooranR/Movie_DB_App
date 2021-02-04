@@ -6,9 +6,10 @@ import {
   setSearchString,
 } from "../../reduxState/slices/movieSlice";
 import Movie from "../../components/Movie/Movie";
-import classes from "./Movies.module.scss";
 import Button from "../../components/Reusable/Button";
 import Input from "../../components/Reusable/Input";
+import MovieModal from "../../components/Movie/MovieModal";
+import classes from "./Movies.module.scss";
 
 interface MovieType {
   id: number;
@@ -19,6 +20,7 @@ interface MovieType {
 function Movies() {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [page, setPage] = useState(1);
+  const [showModal, setShowModal] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -36,11 +38,16 @@ function Movies() {
     event.preventDefault();
   };
 
-  const viewMovie = (event: MouseEvent<HTMLImageElement>, id: number) => {
-    history.push("/movieDetails");
-    dispatch(setMovieId(id));
-    event.preventDefault();
+  const openModal = (event: MouseEvent<HTMLImageElement>, id: number) => {
+      dispatch(setMovieId(id));
+      setShowModal(true);
+      event.preventDefault();
   };
+
+  const closeModal = (event: MouseEvent<HTMLButtonElement>) => {
+    setShowModal(false);
+    event.preventDefault();
+};
 
   useEffect(() => {
     const popMoviesFetch = async () => {
@@ -54,6 +61,7 @@ function Movies() {
     };
     popMoviesFetch();
   }, [page]);
+
 
   const searchMovie = (event: FormEvent<HTMLInputElement>) => {
     setSearch(event.currentTarget.value);
@@ -70,7 +78,7 @@ function Movies() {
       <form onSubmit={submitSearch}>
         <Input
           type="search"
-          name="Search Movie"
+          name="Enter Movie"
           value={search}
           onChange={searchMovie}
           className={classes.Search}
@@ -90,7 +98,7 @@ function Movies() {
                   <Movie
                     title={mov.title}
                     poster_path={mov.poster_path}
-                    imgClick={(e) => viewMovie(e, mov.id)}
+                    imgClick={(e) => openModal(e, mov.id)}
                   />
                 </div>
               );
@@ -102,6 +110,7 @@ function Movies() {
           disabled={movies.length === 0}
         />
       </div>
+      <MovieModal showModal={showModal} modalClick={closeModal} />
     </React.Fragment>
   );
 }

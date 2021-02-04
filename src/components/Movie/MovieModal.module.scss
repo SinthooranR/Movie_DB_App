@@ -1,0 +1,86 @@
+@import "../../styles//colors.scss";
+
+.Movie {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  text-align: center;
+  img {
+    height: 500px;
+    width: 75%;
+    margin: 2.5% 0 0 0%;
+  }
+  div {
+    width: 50%;
+    margin-left: 5%;
+  }
+}
+
+.MovieInfo {
+  margin-top: 5%;
+  .Genres {
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+.Light {
+  color: black;
+}
+
+.Dark {
+  color: white;
+}
+
+.BackButton {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  outline: none;
+  border: transparent;
+}
+
+.LightButton {
+  box-shadow: $box-shadow_dark;
+  background-color: $input_light;
+  color: $general_dark;
+}
+
+.DarkButton {
+  box-shadow: $box-shadow_light;
+  background-color: $input_dark;
+  color: $general_light;
+}
+
+@media (max-width: 900px) {
+  .Movie {
+    flex-direction: column;
+    margin-left: 7.5%;
+    img {
+      height: 300px;
+      width: 50%;
+      margin: 2.5% 0 0 0%;
+    }
+    div {
+      width: 75%;
+      margin-left: 5%;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .Movie {
+    flex-direction: column;
+    margin-left: 10%;
+    img {
+      height: 300px;
+      width: 100%;
+      margin: 2.5% 0 0 0%;
+    }
+    div {
+      width: 75%;
+      margin-left: 5%;
+    }
+  }
+}
