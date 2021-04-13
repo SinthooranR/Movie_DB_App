@@ -11,6 +11,8 @@ interface Movie {
   title: string;
   poster_path: string;
   name: string;
+  showModal: boolean;
+  modalClick: () => void;
 }
 
 interface ModalProps {
@@ -18,7 +20,7 @@ interface ModalProps {
   modalClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 }
 
-function MovieModal(props: ModalProps) {
+const MovieModal = ({ showModal, modalClick }: ModalProps) => {
   const IMAGE_API = "https://image.tmdb.org/t/p/w500/";
   const [movie, setMovie] = useState<Movie[] | any>([]);
   const [genre, setGenre] = useState<any>([]);
@@ -27,20 +29,17 @@ function MovieModal(props: ModalProps) {
 
   // temportary variables
   let background;
-  let backgroundColor;
   let fontColor;
   let buttonColor;
 
   if (theme) {
-    backgroundColor = "#232526";
-    backgroundColor = "rgba(0, 0, 0, 0.75)";
     fontColor = classes.Dark;
-    buttonColor = classes.DarkButton;
+    background = "#000000";
+    buttonColor = classes.LightButton;
   } else {
     background = "#fafafa";
-    backgroundColor = "rgba(255, 255, 255, 0.75)";
     fontColor = classes.Light;
-    buttonColor = classes.LightButton;
+    buttonColor = classes.DarkButton;
   }
 
   useEffect(() => {
@@ -57,26 +56,45 @@ function MovieModal(props: ModalProps) {
     popMoviesFetch();
   }, [movieId]);
 
-
-
   return (
-    <Modal isOpen={props.showModal} ariaHideApp={false} style={{overlay: {backgroundColor: `${backgroundColor}`}, content: {background: `${background}`}}}>
-      <Button buttonName="Go Back" onClick={props.modalClick} className={[classes.BackButton, buttonColor].join(" ")}/>
+    <Modal
+      isOpen={showModal}
+      ariaHideApp={false}
+      style={{
+        overlay: { backgroundImage: `${""}` },
+        content: {
+          background: `${background}`,
+          overflowY: "scroll",
+          WebkitOverflowScrolling: "touch",
+        },
+      }}
+      onAfterOpen={() => {
+        document.body.style.overflow = "hidden";
+      }}
+      onAfterClose={() => {
+        document.body.style.overflow = "scroll";
+      }}
+    >
+      <Button
+        buttonName="Go Back"
+        onClick={modalClick}
+        className={[classes.BackButton, buttonColor].join(" ")}
+      />
       {movieId === movie.id ? (
         <div className={[classes.Movie, fontColor].join(" ")}>
-          <div>
+          <div className={classes.ImageContainer}>
             <h2>{movie.title}</h2>
             <img src={IMAGE_API + movie.poster_path} alt="" />
           </div>
           <div key={movie.id} className={classes.MovieInfo}>
-            <h3>Overview</h3>
+            <h2>Overview</h2>
             <p>{movie.overview}</p>
-            <h3>Rating</h3>
+            <h2>Rating</h2>
             <h4>{movie.vote_average}</h4>
             <h3>Genres: </h3>
             <div className={classes.Genres}>
               {genre !== undefined &&
-                genre.map((gen: any) => <h4 key={gen.id}>{gen.name}</h4>)}
+                genre.map((gen: any) => <p key={gen.id}>{gen.name}</p>)}
             </div>
           </div>
         </div>
@@ -85,6 +103,6 @@ function MovieModal(props: ModalProps) {
       )}
     </Modal>
   );
-}
+};
 
 export default MovieModal;

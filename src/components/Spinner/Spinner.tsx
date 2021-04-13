@@ -10,7 +10,7 @@ interface SpinnerProps {
   className?: string;
 }
 
-function Spinner(props: SpinnerProps) {
+const Spinner = ({ className }: SpinnerProps) => {
   const [check, setCheck] = useState(true);
   const { theme } = useSelector(mainSelector);
   const [openModal, setOpenModal] = useState(true);
@@ -19,11 +19,15 @@ function Spinner(props: SpinnerProps) {
   let backgroundColor;
   let fontColor;
   if (theme) {
-    spinner = <CircularProgress color="secondary" size={100} />;
+    spinner = (
+      <CircularProgress color="secondary" size={100} className={className} />
+    );
     backgroundColor = "rgba(0, 0, 1, 0.75)";
     fontColor = "white";
   } else {
-    spinner = <CircularProgress color="primary" size={100} />;
+    spinner = (
+      <CircularProgress color="primary" size={100} className={className} />
+    );
     backgroundColor = "rgba(255, 255, 255, 0.75)";
     fontColor = "black";
   }
@@ -37,8 +41,10 @@ function Spinner(props: SpinnerProps) {
       setOpenModal(false);
     }, 3000);
 
-    return() => {clearTimeout(timer); clearTimeout(timer2)}
-  
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(timer2);
+    };
   }, [check, openModal]);
 
   return (
@@ -52,11 +58,11 @@ function Spinner(props: SpinnerProps) {
         {check ? (
           <React.Fragment>{spinner}</React.Fragment>
         ) : (
-          <h1 style={{color: `${fontColor}`}}>Nothing Found</h1>
+          <h1 style={{ color: `${fontColor}` }}>Nothing Found</h1>
         )}
       </div>
     </Modal>
   );
-}
+};
 
 export default Spinner;

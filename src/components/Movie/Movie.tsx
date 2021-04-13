@@ -10,23 +10,17 @@ interface MovieProps {
   imgClick?: (event: MouseEvent<HTMLImageElement>) => void;
 }
 
-function Movie(props: MovieProps) {
+const Movie = ({ poster_path, imgClick, title }: MovieProps) => {
   return (
     <div className={classes.Movie}>
-      {props.poster_path ? (
-        <img
-          src={IMAGE_API + props.poster_path}
-          alt=""
-          onClick={props.imgClick}
-        />
+      {poster_path ? (
+        <img src={IMAGE_API + poster_path} alt="" onClick={imgClick} />
       ) : (
-        <img src={noImage} alt="" onClick={props.imgClick} />
+        <img src={noImage} alt="" onClick={imgClick} />
       )}
-      <div>
-        {/* <h3>{props.title}</h3> */}
-      </div>
+      <div>{!poster_path && <h3>{title}</h3>}</div>
     </div>
   );
-}
+};
 
 export default Movie;

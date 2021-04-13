@@ -1,27 +1,40 @@
 @import "../../styles//colors.scss";
 
+.ReactModal__Body--open,
+.ReactModal__Html--open {
+  scroll-behavior: smooth;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
 .Movie {
   display: flex;
   flex-direction: row;
   width: 100%;
   text-align: center;
-  img {
-    height: 500px;
-    width: 75%;
-    margin: 2.5% 0 0 0%;
-  }
-  div {
+  font-size: 1.15rem;
+  .ImageContainer {
+    height: 100%;
     width: 50%;
-    margin-left: 5%;
+    img {
+      height: 650px;
+      width: 75%;
+      margin-top: 2.5%;
+    }
   }
-}
 
-.MovieInfo {
-  margin-top: 5%;
-  .Genres {
-    display: grid;
-    grid-gap: 1rem;
-    grid-template-columns: repeat(6, 1fr);
+  .MovieInfo {
+    margin: 1% 2.5% 0 0;
+    width: 50%;
+
+    height: inherit;
+    .Genres {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin: auto;
+    }
   }
 }
 
@@ -41,46 +54,57 @@
   border: transparent;
 }
 
-.LightButton {
-  box-shadow: $box-shadow_dark;
-  background-color: $input_light;
-  color: $general_dark;
-}
-
 .DarkButton {
   box-shadow: $box-shadow_light;
   background-color: $input_dark;
   color: $general_light;
 }
 
-@media (max-width: 900px) {
+@media screen and (min-width: 900px) and (max-width: 1299px) {
   .Movie {
     flex-direction: column;
-    margin-left: 7.5%;
-    img {
-      height: 300px;
-      width: 50%;
-      margin: 2.5% 0 0 0%;
-    }
-    div {
-      width: 75%;
-      margin-left: 5%;
+    align-items: center;
+    width: 100%;
+    .ImageContainer {
+      img {
+        height: 500px;
+        width: 100%;
+        margin: 2.5% 0 0 0%;
+      }
     }
   }
 }
 
-@media (max-width: 600px) {
+@media screen and (min-width: 599px) and (max-width: 899px) {
   .Movie {
     flex-direction: column;
-    margin-left: 10%;
-    img {
-      height: 300px;
-      width: 100%;
-      margin: 2.5% 0 0 0%;
+    justify-content: center;
+    align-items: center;
+    .ImageContainer {
+      height: 100%;
+      width: 50%;
+      img {
+        height: 300px;
+        width: 100%;
+        margin: 2.5% 0 0 0%;
+      }
     }
-    div {
-      width: 75%;
-      margin-left: 5%;
+  }
+}
+
+@media screen and (min-width: 99px) and (max-width: 499px) {
+  .Movie {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .ImageContainer {
+      height: 100%;
+      width: 50%;
+      img {
+        height: 200px;
+        width: 100%;
+        margin: 2.5% 0 0 0%;
+      }
     }
   }
 }

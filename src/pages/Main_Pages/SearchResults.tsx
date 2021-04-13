@@ -15,7 +15,7 @@ interface MovieType {
   poster_path: string;
 }
 
-function SearchResults() {
+const SearchResults = () => {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [page, setPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -68,12 +68,12 @@ function SearchResults() {
       <Button
         buttonName="Go Back"
         onClick={(e) => {
-          history.push("/movies");
+          history.push("/");
           e.preventDefault();
         }}
         className={classes.BackButton}
       />
-      <h2 style={{textAlign: 'center'}}>Results for: {searchMovieString}</h2>
+      <h2 style={{ textAlign: "center" }}>Results for: {searchMovieString}</h2>
       <div className={classes.MainPage}>
         <Button
           buttonName="<"
@@ -94,7 +94,7 @@ function SearchResults() {
               );
             })
           ) : (
-            <Spinner className={classes.SpinnerCheck}/>
+            <Spinner className={classes.SpinnerCheck} />
           )}
         </div>
         <Button
@@ -106,6 +106,6 @@ function SearchResults() {
       <MovieModal showModal={showModal} modalClick={closeModal} />
     </React.Fragment>
   );
-}
+};
 
 export default SearchResults;

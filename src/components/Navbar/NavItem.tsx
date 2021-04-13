@@ -8,7 +8,7 @@ interface NavItemProps {
   routeName: string;
 }
 
-function NavItem(props: NavItemProps) {
+const NavItem = ({ routePath, routeName }: NavItemProps) => {
   const { theme } = useSelector(mainSelector);
 
   let currentColor;
@@ -20,17 +20,16 @@ function NavItem(props: NavItemProps) {
       currentColor = "#fefefe ";
       break;
     default:
-      currentColor = "#00000f";
-      break;
   }
   return (
     <NavLink
-      to={props.routePath}
+      exact
+      to={routePath}
       activeStyle={{ borderTop: `1px solid ${currentColor}` }}
     >
-      {props.routeName}
+      {routeName}
     </NavLink>
   );
-}
+};
 
 export default NavItem;

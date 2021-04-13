@@ -8,16 +8,16 @@ interface InputProps {
   onChange: (event: FormEvent<HTMLInputElement>) => void;
 }
 
-function Input(props: InputProps) {
+const Input = ({ type, name, value, className, onChange }: InputProps) => {
   return (
     <input
-      type={props.type}
-      placeholder={props.name}
-      value={props.value}
-      onChange={props.onChange}
-      className={props.className}
+      type={type}
+      placeholder={name}
+      value={value}
+      onChange={onChange}
+      className={className}
     />
   );
-}
+};
 
 export default Input;

@@ -17,7 +17,7 @@ interface MovieType {
   poster_path: string;
 }
 
-function Movies() {
+const Movies = () => {
   const [movies, setMovies] = useState<MovieType[]>([]);
   const [page, setPage] = useState(1);
   const [showModal, setShowModal] = useState(false);
@@ -68,7 +68,7 @@ function Movies() {
 
   const submitSearch = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    history.push("/searchResults");
+    history.push("/movies");
     dispatch(setSearchString(search));
   };
 
@@ -112,6 +112,6 @@ function Movies() {
       <MovieModal showModal={showModal} modalClick={closeModal} />
     </React.Fragment>
   );
-}
+};
 
 export default Movies;

@@ -6,9 +6,8 @@ import WbSunnyIcon from "@material-ui/icons/WbSunny";
 import NightsStayIcon from "@material-ui/icons/NightsStay";
 import classes from "./Navbar.module.scss";
 
-function Navbar() {
-
-  const {theme} = useSelector(mainSelector);
+const Navbar = () => {
+  const { theme } = useSelector(mainSelector);
   const dispatch = useDispatch();
 
   let currentTheme;
@@ -27,14 +26,12 @@ function Navbar() {
   const themeSwitch = (event: MouseEvent<HTMLDivElement>) => {
     dispatch(setTheme(!theme));
     event.preventDefault();
-    console.log(theme);
   };
-
 
   return (
     <nav className={[classes.Navbar, currentTheme].join(" ")}>
       <ul>
-        <NavItem routeName="Movies" routePath="/movies" />
+        <NavItem routeName="Movies" routePath="/" />
         <NavItem routeName="About" routePath="/about" />
       </ul>
       <div onClick={themeSwitch} className={classes.ThemeIcon}>
@@ -46,6 +43,6 @@ function Navbar() {
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;

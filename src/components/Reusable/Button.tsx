@@ -9,16 +9,23 @@ interface ButtonProps {
   disabled?: boolean;
 }
 
-const Button = (props: ButtonProps) => {
+const Button = ({
+  buttonName,
+  onClick,
+  style,
+  className,
+  type,
+  disabled,
+}: ButtonProps) => {
   return (
     <button
-      onClick={props.onClick}
-      style={props.style}
-      className={props.className}
-      type={props.type}
-      disabled={props.disabled}
+      onClick={onClick}
+      style={style}
+      className={className}
+      type={type}
+      disabled={disabled}
     >
-      {props.buttonName}
+      {buttonName}
     </button>
   );
 };

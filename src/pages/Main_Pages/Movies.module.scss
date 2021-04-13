@@ -41,7 +41,7 @@
   }
 }
 
-.BackButton{
+.BackButton {
   padding: 10px;
   margin: 1% 0 0 5%;
   cursor: pointer;
@@ -58,7 +58,7 @@ input[type="search"]::-webkit-search-results-decoration {
   display: none;
 }
 
-@media (max-width: 900px) {
+@media screen and (min-width: 900px) and (max-width: 1299px) {
   .MainPage {
     max-width: 100vw;
     .Movies {
@@ -67,20 +67,38 @@ input[type="search"]::-webkit-search-results-decoration {
   }
 }
 
-@media (max-width: 750px) {
+@media screen and (min-width: 299px) and (max-width: 899px) {
+  .Search {
+    text-align: center;
+    width: 90%;
+    margin: 2.5% 0 5% 5%;
+    padding: 20px 0 20px 0;
+  }
   .MainPage {
     max-width: 100vw;
     .Movies {
-      grid-template-columns: repeat(2, 1fr);
+      width: 50%;
+      grid-template-columns: repeat(1, 1fr);
+    }
+    button {
+      height: 45px;
+      width: 45px;
+      padding: 12.5px 17.5px 12.5px 17.5px;
+      font-size: 1.5rem;
+      // border-radius: 50%;
+      // outline: none;
+      margin-top: 25%;
+      // cursor: pointer;
+      // border: transparent;
     }
   }
 }
 
-@media (max-width: 600px) {
-  .MainPage {
-    max-width: 100vw;
-    .Movies {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-}
+// @media (max-width: 600px) {
+//   .MainPage {
+//     max-width: 100vw;
+//     .Movies {
+//       grid-template-columns: repeat(2, 1fr);
+//     }
+//   }
+// }

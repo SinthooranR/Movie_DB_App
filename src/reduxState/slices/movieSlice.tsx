@@ -7,7 +7,7 @@ export interface State {
 }
 
 const initialState: State = {
-  theme: false,
+  theme: true,
   searchMovieString: "",
   movieId: null,
 };
