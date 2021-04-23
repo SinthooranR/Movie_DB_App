@@ -1,3 +1,14 @@
+# Can be viewed here:
+
+https://moviedb-sinthooranr.netlify.app/
+
+# Uses 
+- React
+- Redux-Toolkit
+- TypeScript
+- The Movie Database API: https://developers.themoviedb.org/3
+- SCSS
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
