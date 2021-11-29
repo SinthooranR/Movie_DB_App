@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import { useSelector } from "react-redux";
 import { mainSelector } from "../../reduxState/slices/movieSlice";
 import Button from "../Reusable/Button";
-import Spinner from "../Spinner/Spinner";
 import classes from "./MovieModal.module.scss";
 
 interface Movie {
@@ -34,7 +33,7 @@ const MovieModal = ({ showModal, modalClick }: ModalProps) => {
 
   if (theme) {
     fontColor = classes.Dark;
-    background = "#000000";
+    background = "#232526";
     buttonColor = classes.LightButton;
   } else {
     background = "#fafafa";
@@ -66,6 +65,7 @@ const MovieModal = ({ showModal, modalClick }: ModalProps) => {
           background: `${background}`,
           overflowY: "scroll",
           WebkitOverflowScrolling: "touch",
+          borderRadius: "2.5rem",
         },
       }}
       onAfterOpen={() => {
@@ -80,7 +80,7 @@ const MovieModal = ({ showModal, modalClick }: ModalProps) => {
         onClick={modalClick}
         className={[classes.BackButton, buttonColor].join(" ")}
       />
-      {movieId === movie.id ? (
+      {movieId === movie.id && (
         <div className={[classes.Movie, fontColor].join(" ")}>
           <div className={classes.ImageContainer}>
             <h2>{movie.title}</h2>
@@ -98,8 +98,6 @@ const MovieModal = ({ showModal, modalClick }: ModalProps) => {
             </div>
           </div>
         </div>
-      ) : (
-        <Spinner />
       )}
     </Modal>
   );

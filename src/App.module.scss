@@ -8,19 +8,22 @@
   background-color: $background_light;
   color: $general_dark;
   transition: 0.5s;
-  animation: fade 1s ease-in;
   input {
     background-color: $input_light;
     color: $general_dark;
     box-shadow: $box-shadow_dark;
   }
+  ::placeholder {
+    color: black;
+  }
+
   button {
     background-color: $input_light;
     color: $general_dark;
-    box-shadow: $box-shadow_dark;
+    border: 1px solid $box-shadow_dark;
   }
-  button:hover{
-    background-color: #D3CCE3;
+  button:hover {
+    background-color: #d3cce3;
     transition: 0.5s;
   }
   a,
@@ -33,29 +36,25 @@
   background-color: $background_dark;
   color: $general_light;
   transition: 0.5s;
-  animation: fade 1s ease-in;
   input {
     background-color: $input_dark;
     color: $general_light;
     box-shadow: $box-shadow_light;
   }
+  ::placeholder {
+    color: white;
+  }
   button {
     background-color: $input_dark;
     color: $general_light;
-    box-shadow: $box-shadow_light;
+    border: 1px solid $box-shadow_light;
   }
-  button:hover{
+  button:hover {
     background-color: #302b63;
     transition: 0.5s;
   }
   a,
   a:visited {
     color: $general_light;
-  }
-}
-
-@keyframes fade {
-  0% {
-    opacity: 0;
   }
 }

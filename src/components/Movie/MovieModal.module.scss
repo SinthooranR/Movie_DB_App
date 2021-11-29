@@ -10,30 +10,29 @@
 
 .Movie {
   display: flex;
-  flex-direction: row;
-  width: 100%;
+  flex-direction: column;
+  // width: 100%;
   text-align: center;
   font-size: 1.15rem;
   .ImageContainer {
+    margin: 0 auto;
     height: 100%;
     width: 50%;
     img {
-      height: 650px;
+      height: 35rem;
       width: 75%;
       margin-top: 2.5%;
+      border-radius: 2.5rem;
     }
   }
 
   .MovieInfo {
-    margin: 1% 2.5% 0 0;
-    width: 50%;
-
     height: inherit;
     .Genres {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      margin: auto;
+      margin: 0 auto;
     }
   }
 }
@@ -60,6 +59,29 @@
   color: $general_light;
 }
 
+@media screen and (min-width: 1629px) {
+  .Movie {
+    .ImageContainer {
+      h2 {
+        font-size: 1.5rem;
+      }
+      img {
+        height: 55rem;
+        width: 100%;
+        margin: 2.5% 0 0 0%;
+      }
+    }
+  }
+
+  .MovieInfo {
+    font-size: 1.5rem;
+  }
+  .BackButton {
+    padding: 25px;
+    font-size: 1.25rem;
+  }
+}
+
 @media screen and (min-width: 900px) and (max-width: 1299px) {
   .Movie {
     flex-direction: column;
@@ -82,26 +104,26 @@
     align-items: center;
     .ImageContainer {
       height: 100%;
-      width: 50%;
+      width: 100%;
       img {
-        height: 300px;
-        width: 100%;
+        height: 25rem;
+        width: 75%;
         margin: 2.5% 0 0 0%;
       }
     }
   }
 }
 
-@media screen and (min-width: 99px) and (max-width: 499px) {
+@media screen and (min-width: 99px) and (max-width: 598px) {
   .Movie {
     flex-direction: column;
     justify-content: center;
     align-items: center;
     .ImageContainer {
       height: 100%;
-      width: 50%;
+      width: 95%;
       img {
-        height: 200px;
+        height: 20rem;
         width: 100%;
         margin: 2.5% 0 0 0%;
       }

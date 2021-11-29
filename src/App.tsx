@@ -5,7 +5,6 @@ import { mainSelector } from "./reduxState/slices/movieSlice";
 
 import Navbar from "./components/Navbar/Navbar";
 import MoviesPage from "./pages/Main_Pages/Movies";
-import SearchResultsPage from "./pages/Main_Pages/SearchResults";
 import AboutPage from "./pages/Extra/About";
 
 import classes from "./App.module.scss";
@@ -33,7 +32,6 @@ function App() {
         <Switch>
           <Route exact path="/" component={MoviesPage} />
           <Route path="/about" component={AboutPage} />
-          <Route path="/movies" component={SearchResultsPage} />
         </Switch>
       </div>
     </React.Fragment>
