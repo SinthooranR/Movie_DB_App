@@ -66,6 +66,9 @@ const MovieModal = ({ showModal, modalClick }: ModalProps) => {
           overflowY: "scroll",
           WebkitOverflowScrolling: "touch",
           borderRadius: "2.5rem",
+          height: "75vh",
+          width: "75%",
+          margin: "auto",
         },
       }}
       onAfterOpen={() => {

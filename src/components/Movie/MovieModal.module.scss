@@ -10,17 +10,15 @@
 
 .Movie {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   // width: 100%;
   text-align: center;
-  font-size: 1.15rem;
   .ImageContainer {
     margin: 0 auto;
     height: 100%;
     width: 50%;
     img {
-      height: 35rem;
-      width: 75%;
+      height: 32.5rem;
       margin-top: 2.5%;
       border-radius: 2.5rem;
     }
@@ -59,15 +57,14 @@
   color: $general_light;
 }
 
-@media screen and (min-width: 1629px) {
+@media screen and (min-width: 1300px) {
   .Movie {
     .ImageContainer {
       h2 {
-        font-size: 1.5rem;
+        font-size: 2.5rem;
       }
       img {
-        height: 55rem;
-        width: 100%;
+        height: 40rem;
         margin: 2.5% 0 0 0%;
       }
     }
@@ -90,7 +87,6 @@
     .ImageContainer {
       img {
         height: 500px;
-        width: 100%;
         margin: 2.5% 0 0 0%;
       }
     }
